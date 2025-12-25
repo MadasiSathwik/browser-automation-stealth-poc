@@ -1,0 +1,83 @@
+# Browser Automation POC Configuration
+# This is an educational demonstration of browser automation techniques
+
+# IMPORTANT: Set safe_mode to true to prevent real-world execution
+safe_mode: true
+demo_mode: false
+
+browser:
+  headless: false
+  no_sandbox: false
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+
+auth:
+  # Use a mock/test site for demonstration
+  login_url: "https://mock-professional-network.example.com/login"
+  email_selector: "#email"
+  password_selector: "#password"
+  submit_selector: "button[type='submit']"
+
+  selectors:
+    captcha_detected: ".captcha-container"
+    2fa_detected: ".two-factor-prompt"
+    login_failed: ".error-message"
+    logged_in_indicator: ".user-dashboard"
+
+search:
+  base_url: "https://mock-professional-network.example.com/search"
+  query: "Software Engineer"
+  max_pages: 5
+  results_per_page: 10
+
+  filters:
+    location: "United States"
+    experience_level: "mid-senior"
+
+  selectors:
+    profile_card: ".profile-card"
+    profile_name: ".profile-name"
+    profile_title: ".profile-title"
+    profile_company: ".profile-company"
+    profile_link: "a.profile-link"
+    next_page_button: ".pagination-next"
+
+limits:
+  daily_connections: 50
+  hourly_connections: 10
+  daily_messages: 30
+
+timing:
+  min_delay: 2
+  max_delay: 8
+  between_actions: 30
+  typing_min: 45
+  typing_max: 120
+  think_min: 500
+  think_max: 2000
+
+stealth:
+  mouse_movement:
+    enabled: true
+    bezier_curves: true
+    overshoot: true
+    micro_corrections: true
+    velocity_variance: 0.3
+
+  random_scrolling: true
+  business_hours_only: false
+
+  user_agent_rotation:
+    - "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    - "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+    - "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+
+  viewport_sizes:
+    - width: 1920
+      height: 1080
+    - width: 1366
+      height: 768
+    - width: 1536
+      height: 864
+
+database:
+  path: "automation.db"
